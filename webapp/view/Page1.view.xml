@@ -1,0 +1,331 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.baba.ZDSD_TOUR_STATUS.controller.Page1" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout">
+	<App id="idAppControl">
+		<Page showHeader="true" title="Tour Status" showFooter="true" showNavButton="true">
+			<content>
+				<Label text="Branch" design="Bold" width="200px" required="true" textAlign="Begin" textDirection="Inherit" visible="true"
+					class="sapUiResponsiveMargin"/>
+				<MultiComboBox editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%">
+					<items>
+						<core:Item text="2201 - Sims Drive" enabled="true" key="2201 - Sims Drive"/>
+						<core:Item text="2202 - Tagore Branch" enabled="true" key="2202 - Tagore Branch"/>
+					</items>
+				</MultiComboBox>
+				<Label text="Visit Plan Type" design="Bold" width="200px" required="true" textAlign="Begin" textDirection="Inherit" visible="true"
+					class="sapUiResponsiveMargin"/>
+				<MultiComboBox editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%">
+					<items>
+						<core:Item text="VAN - Van Sales" enabled="true" key="VAN - Van Sales"/>
+						<core:Item text="SUP - Supervisor" enabled="true" key="SUP - Supervisor"/>
+						<core:Item text="VMD - Multiday Tour" enabled="true" key="VMD - Multiday Tour"/>
+					</items>
+				</MultiComboBox>
+				<Label text="User" design="Bold" width="200px" required="true" textAlign="Begin" textDirection="Inherit" visible="true"
+					class="sapUiResponsiveMargin"/>
+				<MultiComboBox editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%">
+					<items>
+						<core:Item text="SDR2LI" enabled="true" key="SDR2LI"/>
+						<core:Item text="TGR1WD" enabled="true" key="TGR1WD"/>
+						<core:Item text="TGR2TU" enabled="true" key="TGR2TU"/>
+					</items>
+				</MultiComboBox>
+				<IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true"
+					selectedKey="Ok">
+					<items>
+						<IconTabFilter icon="sap-icon://message-warning" iconColor="Critical" text="Warning" count="" design="Vertical" showAll="false"
+							textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+							<content>
+								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+									class="sapUiResponsiveMargin">
+									<infoToolbar/>
+									<headerToolbar/>
+									<columns>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Route" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Tour ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Tour Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Transaction Data Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Pricing Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Reload Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="SDR2LI" text="" titleActive="false" visible="true"/>
+												<Text text="106100000919" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="" unit="" emphasized="true" state="None"/>
+												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="TGR1WD" text="" titleActive="false" visible="true"/>
+												<Text text="106100000920" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="" unit="" emphasized="true" state="None"/>
+												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="TGR2TU" text="" titleActive="false" visible="true"/>
+												<Text text="1061000000921" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="" unit="" emphasized="true" state="None"/>
+												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</content>
+						</IconTabFilter>
+						<IconTabSeparator icon="" iconDensityAware="false"/>
+						<IconTabFilter icon="sap-icon://message-error" iconColor="Negative" text="Error" count="3" design="Vertical" showAll="false"
+							textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+							<content>
+								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+									class="sapUiResponsiveMargin">
+									<infoToolbar/>
+									<headerToolbar/>
+									<columns>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Route" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Tour ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Tour Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Transaction Data Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Pricing Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Reload Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="SDV2GE" text="" titleActive="false" visible="true"/>
+												<Text text="106100000919" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="Upload Error" unit="" emphasized="true" state="None"/>
+												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="SDV3CH" text="" titleActive="false" visible="true"/>
+												<Text text="106100000920" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="Upload Error" unit="" emphasized="true" state="None"/>
+												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="TGV1YN" text="" titleActive="false" visible="true"/>
+												<Text text="1061000000921" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="Upload Error" unit="" emphasized="true" state="None"/>
+												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</content>
+						</IconTabFilter>
+						<IconTabSeparator icon="" iconDensityAware="false"/>
+						<IconTabFilter icon="sap-icon://message-success" iconColor="Positive" text="Other" count="3" design="Vertical" showAll="false"
+							textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+							<content>
+								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+									class="sapUiResponsiveMargin">
+									<infoToolbar/>
+									<headerToolbar/>
+									<columns>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Route" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Tour ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Tour Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Transaction Data Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Pricing Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Reload Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="TGR2TU" text="" titleActive="false" visible="true"/>
+												<Text text="1061000000921" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="Not Assigned" unit="" emphasized="true" state="None"/>
+												<Text text="Not Started" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="BS0139" text="" titleActive="false" visible="true"/>
+												<Text text="20100000090" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="Not Assigned" unit="" emphasized="true" state="None"/>
+												<Text text="Not Started" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="BS0169" text="" titleActive="false" visible="true"/>
+												<Text text="2010000092" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<ObjectNumber number="Not Assigned" unit="" emphasized="true" state="None"/>
+												<Text text="Not Started" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+												<layout:HorizontalLayout>
+													<layout:content/>
+												</layout:HorizontalLayout>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</content>
+						</IconTabFilter>
+					</items>
+					<content/>
+				</IconTabBar>
+			</content>
+			<footer>
+				<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+					<content>
+						<ToolbarSpacer width=""/>
+						<Button text="Get Data" type="Default" icon="sap-icon://repost" iconFirst="true" width="auto" enabled="true" visible="true"
+							iconDensityAware="false" press="_onButtonPress"/>
+					</content>
+				</OverflowToolbar>
+			</footer>
+			<headerContent/>
+			<subHeader/>
+			<customHeader/>
+		</Page>
+	</App>
+</mvc:View>

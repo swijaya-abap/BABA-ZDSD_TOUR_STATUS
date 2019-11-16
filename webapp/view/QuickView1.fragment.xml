@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.baba.ZDSD_TOUR_STATUS.controller.QuickView1" xmlns="sap.m">
+    <QuickView placement="Auto" width="320px">
+        <pages>
+            <QuickViewPage header="Supervisor Details" title="Name" titleUrl="" description="Jatin Pursnani" icon="sap-icon://personnel-view">
+                <groups>
+                    <QuickViewGroup visible="true" heading="Details">
+                        <elements>
+                            <QuickViewGroupElement label="Vehicle #" value="ABC1234D" type="text" emailSubject="" pageLinkId="" url="" target="_blank" visible="true"/>
+                            <QuickViewGroupElement label="Handphone" value="+6512345678" type="mobile" emailSubject="" pageLinkId="" url="" target="_blank" visible="true"/>
+                            <QuickViewGroupElement label="Email" value="support@babas.com" type="email" emailSubject="" pageLinkId="" url="" target="_blank" visible="true"/>
+                        </elements>
+                    </QuickViewGroup>
+                </groups>
+            </QuickViewPage>
+        </pages>
+    </QuickView>
+</core:FragmentDefinition>
