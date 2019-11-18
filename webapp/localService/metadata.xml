@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZDSDO_TOUR_STATUS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="SELECTION" sap:content-version="1">
+				<Key><PropertyRef Name="Branch"/></Key><Property Name="Branch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Visit Group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="BranchName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Visit Group"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VisitPlan" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Visit Plan Type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="VisitPlanName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="User" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UserName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="BRANCH" sap:content-version="1">
+				<Key><PropertyRef Name="AUTH"/></Key><Property Name="AUTH" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Visit Group" sap:sortable="false"/><Property Name="AUTHT" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Visit Group" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="VISITPLANTYPE" sap:content-version="1">
+				<Key><PropertyRef Name="VPTYP"/></Key><Property Name="VPTYP" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Visit Plan Type" sap:sortable="false"/><Property Name="VPTYPT" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="USER" sap:content-version="1">
+				<Key><PropertyRef Name="Branch"/><PropertyRef Name="Vptyp"/><PropertyRef Name="Zuser"/></Key><Property Name="Branch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Visit Group" sap:sortable="false"/><Property Name="Vptyp" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Visit Plan Type" sap:sortable="false"/><Property Name="Zuser" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer" sap:sortable="false"/><Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZDSDO_TOUR_STATUS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="SELECTIONSet" EntityType="ZDSDO_TOUR_STATUS_SRV.SELECTION" sap:searchable="true" sap:content-version="1"/><EntitySet Name="BRANCHSet" EntityType="ZDSDO_TOUR_STATUS_SRV.BRANCH" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="VISITPLANTYPESet" EntityType="ZDSDO_TOUR_STATUS_SRV.VISITPLANTYPE" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="USERSet" EntityType="ZDSDO_TOUR_STATUS_SRV.USER" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link rel="self" href="http://172.17.80.40:8000/sap/opu/odata/sap/ZDSDO_TOUR_STATUS_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version" href="http://172.17.80.40:8000/sap/opu/odata/sap/ZDSDO_TOUR_STATUS_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

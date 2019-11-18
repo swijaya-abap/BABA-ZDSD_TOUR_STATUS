@@ -10,11 +10,19 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.38.11"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZDSDO_TOUR_STATUS_SRV": {
+				"uri": "/sap/opu/odata/sap/ZDSDO_TOUR_STATUS_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -33,10 +41,8 @@
 		"supportedThemes": [
 			"sap_hcb",
 			"sap_belize"
-
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "com.baba.ZDSD_TOUR_STATUS.view.Page1",
@@ -60,12 +66,24 @@
 				"settings": {
 					"bundleName": "com.baba.ZDSD_TOUR_STATUS.i18n.i18n"
 				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZDSDO_TOUR_STATUS_SRV",
+				"preload": true
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -81,19 +99,22 @@
 					]
 				}
 			},
-			"routes": [{
-				"pattern": "Page1/:context:",
-				"name": "Page1",
-				"target": [
-					"Page1"
-				]
-			}, {
-				"pattern": "",
-				"name": "default",
-				"target": [
-					"Page1"
-				]
-			}],
+			"routes": [
+				{
+					"pattern": "Page1/:context:",
+					"name": "Page1",
+					"target": [
+						"Page1"
+					]
+				},
+				{
+					"pattern": "",
+					"name": "default",
+					"target": [
+						"Page1"
+					]
+				}
+			],
 			"targets": {
 				"Page1": {
 					"controlAggregation": "pages",
@@ -104,5 +125,9 @@
 				}
 			}
 		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zdsd_tour_sts/webapp",
+		"_version": "1.1.0"
 	}
 }

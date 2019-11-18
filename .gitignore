@@ -18,3 +18,4 @@ APIExternalProducer.js
 .che/*
 dist/*
 /package-lock.json
+/dist/

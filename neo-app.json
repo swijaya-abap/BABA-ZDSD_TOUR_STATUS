@@ -40,6 +40,15 @@
         "version": "1.52.35"
       },
       "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "BABA_FD0",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "BABA_FD0"
     }
   ],
   "sendWelcomeFileRedirect": true

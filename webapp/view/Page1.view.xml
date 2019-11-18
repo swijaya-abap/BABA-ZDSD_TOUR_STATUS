@@ -5,38 +5,34 @@
 			<content>
 				<Label text="Branch" design="Bold" width="200px" required="true" textAlign="Begin" textDirection="Inherit" visible="true"
 					class="sapUiResponsiveMargin"/>
-				<MultiComboBox editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%">
-					<items>
-						<core:Item text="2201 - Sims Drive" enabled="true" key="2201 - Sims Drive"/>
-						<core:Item text="2202 - Tagore Branch" enabled="true" key="2202 - Tagore Branch"/>
-					</items>
+				<MultiComboBox id="MultiBranch" editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%"
+					selectionChange="onMultiBranchChange" selectionFinish="onMultiBranchFinish" items="{path: '/Data', sorter: { path: 'Branch' }}">
+					<core:Item text="{Branch} - {BranchName}" enabled="true" key="{Branch}"/>
 				</MultiComboBox>
 				<Label text="Visit Plan Type" design="Bold" width="200px" required="true" textAlign="Begin" textDirection="Inherit" visible="true"
 					class="sapUiResponsiveMargin"/>
-				<MultiComboBox editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%">
+				<MultiComboBox id="MultiVisitPlan" editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%"
+					selectionChange="onMultiVisitPlanChange" selectionFinish="onMultiVisitFinish" items="{path: '/Data', sorter: { path: 'VisitPlan' }}">
 					<items>
-						<core:Item text="VAN - Van Sales" enabled="true" key="VAN - Van Sales"/>
-						<core:Item text="SUP - Supervisor" enabled="true" key="SUP - Supervisor"/>
-						<core:Item text="VMD - Multiday Tour" enabled="true" key="VMD - Multiday Tour"/>
+						<core:Item text="{VisitPlan} - {VisitPlanName}" enabled="true" key="{VisitPlan}"/>
 					</items>
 				</MultiComboBox>
 				<Label text="User" design="Bold" width="200px" required="true" textAlign="Begin" textDirection="Inherit" visible="true"
 					class="sapUiResponsiveMargin"/>
-				<MultiComboBox editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%">
+				<MultiComboBox id="MultiUser" editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%"
+					selectionChange="onMultiUserChange" selectionFinish="onMultiUserFinish" items="{path: '/Data', sorter: { path: 'User' }}">
 					<items>
-						<core:Item text="SDR2LI" enabled="true" key="SDR2LI"/>
-						<core:Item text="TGR1WD" enabled="true" key="TGR1WD"/>
-						<core:Item text="TGR2TU" enabled="true" key="TGR2TU"/>
+						<core:Item text="{User} - {UserName}" enabled="true" key="{User}"/>
 					</items>
 				</MultiComboBox>
 				<IconTabBar expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true"
 					selectedKey="Ok">
 					<items>
-						<IconTabFilter icon="sap-icon://message-warning" iconColor="Critical" text="Warning" count="" design="Vertical" showAll="false"
-							textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<IconTabFilter icon="sap-icon://message-warning" iconColor="Critical" text="Warning" count="{modelData>/countFirst}" design="Vertical"
+							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
 								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin">
+									class="sapUiResponsiveMargin" items="{path: 'modelData>/FirstTable'}">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -77,59 +73,26 @@
 											<footer/>
 										</Column>
 									</columns>
-									<items>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="SDR2LI" text="" titleActive="false" visible="true"/>
-												<Text text="106100000919" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="" unit="" emphasized="true" state="None"/>
-												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="TGR1WD" text="" titleActive="false" visible="true"/>
-												<Text text="106100000920" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="" unit="" emphasized="true" state="None"/>
-												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="TGR2TU" text="" titleActive="false" visible="true"/>
-												<Text text="1061000000921" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="" unit="" emphasized="true" state="None"/>
-												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-									</items>
+									<ColumnListItem type="Active">
+										<cells>
+											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
+											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
+											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+												visible="true"/>
+											<Text text="{modelData>PricingStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>ReloadStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</cells>
+									</ColumnListItem>
 								</Table>
 							</content>
 						</IconTabFilter>
 						<IconTabSeparator icon="" iconDensityAware="false"/>
-						<IconTabFilter icon="sap-icon://message-error" iconColor="Negative" text="Error" count="3" design="Vertical" showAll="false"
-							textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<IconTabFilter icon="sap-icon://message-error" iconColor="Negative" text="Error" count="{modelData>/countSecond}" design="Vertical"
+							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
 								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin">
+									class="sapUiResponsiveMargin" items="{path: 'modelData>/SecondTable'}">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -170,59 +133,26 @@
 											<footer/>
 										</Column>
 									</columns>
-									<items>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="SDV2GE" text="" titleActive="false" visible="true"/>
-												<Text text="106100000919" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="Upload Error" unit="" emphasized="true" state="None"/>
-												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="SDV3CH" text="" titleActive="false" visible="true"/>
-												<Text text="106100000920" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="Upload Error" unit="" emphasized="true" state="None"/>
-												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="TGV1YN" text="" titleActive="false" visible="true"/>
-												<Text text="1061000000921" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="Upload Error" unit="" emphasized="true" state="None"/>
-												<Text text="Successfully Processed" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-									</items>
+									<ColumnListItem type="Active">
+										<cells>
+											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
+											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
+											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+												visible="true"/>
+											<Text text="{modelData>PricingStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>ReloadStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</cells>
+									</ColumnListItem>
 								</Table>
 							</content>
 						</IconTabFilter>
 						<IconTabSeparator icon="" iconDensityAware="false"/>
-						<IconTabFilter icon="sap-icon://message-success" iconColor="Positive" text="Other" count="3" design="Vertical" showAll="false"
+						<IconTabFilter icon="sap-icon://message-success" iconColor="Positive" text="Other" count="{modelData>/countThird}" design="Vertical" showAll="false"
 							textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
 								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin">
+									class="sapUiResponsiveMargin" items="{path: 'modelData>/ThirdTable'}">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -263,50 +193,17 @@
 											<footer/>
 										</Column>
 									</columns>
-									<items>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="TGR2TU" text="" titleActive="false" visible="true"/>
-												<Text text="1061000000921" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="Not Assigned" unit="" emphasized="true" state="None"/>
-												<Text text="Not Started" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="BS0139" text="" titleActive="false" visible="true"/>
-												<Text text="20100000090" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="Not Assigned" unit="" emphasized="true" state="None"/>
-												<Text text="Not Started" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-										<ColumnListItem type="Active">
-											<cells>
-												<ObjectIdentifier title="BS0169" text="" titleActive="false" visible="true"/>
-												<Text text="2010000092" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<ObjectNumber number="Not Assigned" unit="" emphasized="true" state="None"/>
-												<Text text="Not Started" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-												<layout:HorizontalLayout>
-													<layout:content/>
-												</layout:HorizontalLayout>
-											</cells>
-										</ColumnListItem>
-									</items>
+									<ColumnListItem type="Active">
+										<cells>
+											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
+											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
+											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+												visible="true"/>
+											<Text text="{modelData>PricingStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>ReloadStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+										</cells>
+									</ColumnListItem>
 								</Table>
 							</content>
 						</IconTabFilter>
@@ -319,7 +216,7 @@
 					<content>
 						<ToolbarSpacer width=""/>
 						<Button text="Get Data" type="Default" icon="sap-icon://repost" iconFirst="true" width="auto" enabled="true" visible="true"
-							iconDensityAware="false" press="_onButtonPress"/>
+							iconDensityAware="false" press="onButtonPress"/>
 					</content>
 				</OverflowToolbar>
 			</footer>
