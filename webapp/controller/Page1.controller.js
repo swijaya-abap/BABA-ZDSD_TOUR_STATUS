@@ -13,7 +13,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.globalVar = {};
 			this.globalVar.oDataModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZDSDO_TOUR_STATUS_SRV/", true);
 
-			var jsonModel = new JSONModel();
 			this.byId("MultiBranch").setModel(new JSONModel());
 			this.byId("MultiVisitPlan").setModel(new JSONModel());
 			this.byId("MultiUser").setModel(new JSONModel());
@@ -28,29 +27,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.globalVar.oDataModel.read("/SELECTIONSet", {
 				success: function (oData, oResponse) {
 					var res = oData.results;
-					this.globalVar.fullSet = res; // Save result into global variable for later use
 
-					this.globalVar.branch = []; // Set mutlicombobox for branch
+					if (res[0].Message !== "") { //Check error from backend
+						MessageBox.error(res[0].Message);
+					} else {
+						this.globalVar.fullSet = res; // Save result into global variable for later use
 
-					// Append only unique branches
-					for (var i = 0; i < res.length; i++) {
-						var isFound = false;
-						for (var j = 0; j < this.globalVar.branch.length; j++) {
-							if (this.globalVar.branch[j].Branch === res[i].Branch) {
-								isFound = true;
-								break;
-							}
-						}
-						if (!isFound) {
-							this.globalVar.branch.push({
-								Branch: res[i].Branch,
-								BranchName: res[i].BranchName
-							});
-						}
+						this._setBranchComboBox(true);
+
+						this._setVisitPlanComboBox(true); //Set visit plan combo box and default everything to be selected
+
+						this._setUserComboBox(true); //Set User plan combo box and default everything to be selected
 					}
-					// End append only unique branches
-
-					this._setViewModel("MultiBranch", this.globalVar.branch); // Set model to view
 
 					this._onBusyE(oBusy);
 				}.bind(this),
@@ -61,7 +49,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}.bind(this)
 			});
 
-			// this.oRouter.getTarget("Page1").attachDisplay(jQuery.proxy(this._handleRouteMatched, this));
+			this.oRouter.getTarget("Page1").attachDisplay(jQuery.proxy(this._handleRouteMatched, this));
 		},
 
 		onButtonPress: function () {
@@ -82,7 +70,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					PLFilters.push(new sap.ui.model.Filter({
 						path: "Route",
 						operator: sap.ui.model.FilterOperator.EQ,
-						value1: this.selectedUser[i].key
+						value1: this.selectedUser[i]
 					}));
 				}
 
@@ -92,9 +80,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						var res = oData.results;
 
 						for (i = 0; i < res.length; i++) {
-							if (res[i].Category === "1") {
+							if (res[i].Category === "S" || res[i].Category === "W") {
 								firstTable.push(res[i]);
-							} else if (res[i].Category === "2") {
+							} else if (res[i].Category === "E") {
 								secondTable.push(res[i]);
 							} else {
 								thirdTable.push(res[i]);
@@ -145,43 +133,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				this._clearViewModel("MultiVisitPlan"); //Clear Multi Combo Box of Visit Plan
 				this._clearViewModel("MultiUser"); //Clear Multi Combo Box of User
 
-				//Append data for Visit Plan
-				this.globalVar.visitPlan = [];
-				for (var i = 0; i < this.globalVar.fullSet.length; i++) {
-					var isFound = false;
-
-					//Check if this branch is selected
-					for (var j = 0; j < this.selectedBranch.length; j++) {
-						if (this.globalVar.fullSet[i].Branch === this.selectedBranch[j].key) {
-							isFound = true;
-							break;
-						}
-					}
-					//End check if this branch is selected
-
-					if (isFound) {
-						//Append only unique visit plan
-						isFound = false;
-						for (j = 0; j < this.globalVar.visitPlan.length; j++) {
-							if (this.globalVar.visitPlan[j].VisitPlan === this.globalVar.fullSet[i].VisitPlan) {
-								isFound = true;
-								break;
-							}
-						}
-						if (!isFound) {
-							this.globalVar.visitPlan.push({
-								VisitPlan: this.globalVar.fullSet[i].VisitPlan,
-								VisitPlanName: this.globalVar.fullSet[i].VisitPlanName
-							});
-						}
-						// ENd append only unique visit plan
-					}
-				}
-				//End append data for Visit Plan
-
-				if (this.globalVar.visitPlan.length > 0) {
-					this._setViewModel("MultiVisitPlan", this.globalVar.visitPlan); //Populate data to view model
-				}
+				this._setVisitPlanComboBox(false); //Set Visit Plan Combo Box data based on selected branch
 			}
 		},
 
@@ -193,55 +145,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 				this._clearViewModel("MultiUser"); //Clear Multi Combo Box of User
 
-				//Append data for Visit Plan
-				this.globalVar.user = [];
-				for (var i = 0; i < this.globalVar.fullSet.length; i++) {
-					var isFound = false;
-
-					//Check if this branch is selected
-					for (var j = 0; j < this.selectedBranch.length; j++) {
-						if (this.globalVar.fullSet[i].Branch === this.selectedBranch[j].key) {
-							isFound = true;
-							break;
-						}
-					}
-					//End check if this branch is selected
-
-					//Check if this visit plan is selected
-					if (isFound) {
-						isFound = false;
-						for (j = 0; j < this.selectedVisitPlan.length; j++) {
-							if (this.globalVar.fullSet[i].VisitPlan === this.selectedVisitPlan[j].key) {
-								isFound = true;
-								break;
-							}
-						}
-					}
-					//End check if this visit plan is selected
-
-					if (isFound) {
-						//Append only unique user
-						isFound = false;
-						for (j = 0; j < this.globalVar.user.length; j++) {
-							if (this.globalVar.user[j].User === this.globalVar.fullSet[i].User) {
-								isFound = true;
-								break;
-							}
-						}
-						if (!isFound) {
-							this.globalVar.user.push({
-								User: this.globalVar.fullSet[i].User,
-								UserName: this.globalVar.fullSet[i].UserName
-							});
-						}
-						// ENd append only unique user
-					}
-				}
-				//End append data for Visit Plan
-
-				if (this.globalVar.user.length > 0) {
-					this._setViewModel("MultiUser", this.globalVar.user); //Populate data to view model
-				}
+				this._setUserComboBox(false);
 			}
 		},
 
@@ -253,11 +157,131 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 
-		_setViewModel: function (modelName, data) {
+		_setBranchComboBox: function (setSelected) {
+			this.globalVar.branch = []; // Set mutli combo box for branch
+			// Append only unique branches
+			for (var i = 0; i < this.globalVar.fullSet.length; i++) {
+				var isFound = false;
+				for (var j = 0; j < this.globalVar.branch.length; j++) {
+					if (this.globalVar.branch[j].Branch === this.globalVar.fullSet[i].Branch) {
+						isFound = true;
+						break;
+					}
+				}
+				if (!isFound) {
+					this.globalVar.branch.push({
+						Branch: this.globalVar.fullSet[i].Branch,
+						BranchName: this.globalVar.fullSet[i].BranchName
+					});
+					if (setSelected) this.selectedBranch.push(this.globalVar.fullSet[i].Branch); //Set as selected branch
+				}
+			}
+			// End append only unique branches
+
+			this._setViewModel("MultiBranch", this.globalVar.branch, this.selectedBranch); // Set model to view
+		},
+
+		_setUserComboBox: function (setSelected) {
+			//Append data for Visit Plan
+			this.globalVar.user = [];
+			for (var i = 0; i < this.globalVar.fullSet.length; i++) {
+				var isFound = false;
+
+				//Check if this branch is selected
+				for (var j = 0; j < this.selectedBranch.length; j++) {
+					if (this.globalVar.fullSet[i].Branch === this.selectedBranch[j]) {
+						isFound = true;
+						break;
+					}
+				}
+				//End check if this branch is selected
+
+				//Check if this visit plan is selected
+				if (isFound) {
+					isFound = false;
+					for (j = 0; j < this.selectedVisitPlan.length; j++) {
+						if (this.globalVar.fullSet[i].VisitPlan === this.selectedVisitPlan[j]) {
+							isFound = true;
+							break;
+						}
+					}
+				}
+				//End check if this visit plan is selected
+
+				if (isFound) {
+					//Append only unique user
+					isFound = false;
+					for (j = 0; j < this.globalVar.user.length; j++) {
+						if (this.globalVar.user[j].User === this.globalVar.fullSet[i].User) {
+							isFound = true;
+							break;
+						}
+					}
+					if (!isFound) {
+						this.globalVar.user.push({
+							User: this.globalVar.fullSet[i].User,
+							UserName: this.globalVar.fullSet[i].UserName
+						});
+						if (setSelected) this.selectedUser.push(this.globalVar.fullSet[i].User);
+					}
+					// ENd append only unique user
+				}
+			}
+			//End append data for Visit Plan
+
+			if (this.globalVar.user.length > 0) {
+				this._setViewModel("MultiUser", this.globalVar.user, this.selectedUser); //Populate data to view model
+			}
+		},
+
+		_setVisitPlanComboBox: function (setSelected) {
+			//Append data for Visit Plan
+			this.globalVar.visitPlan = [];
+			for (var i = 0; i < this.globalVar.fullSet.length; i++) {
+				var isFound = false;
+
+				//Check if this branch is selected
+				for (var j = 0; j < this.selectedBranch.length; j++) {
+					if (this.globalVar.fullSet[i].Branch === this.selectedBranch[j]) {
+						isFound = true;
+						break;
+					}
+				}
+				//End check if this branch is selected
+
+				if (isFound) {
+					//Append only unique visit plan
+					isFound = false;
+					for (j = 0; j < this.globalVar.visitPlan.length; j++) {
+						if (this.globalVar.visitPlan[j].VisitPlan === this.globalVar.fullSet[i].VisitPlan) {
+							isFound = true;
+							break;
+						}
+					}
+					if (!isFound) {
+						this.globalVar.visitPlan.push({
+							VisitPlan: this.globalVar.fullSet[i].VisitPlan,
+							VisitPlanName: this.globalVar.fullSet[i].VisitPlanName
+						});
+						if (setSelected) this.selectedVisitPlan.push(this.globalVar.fullSet[i].VisitPlan);
+					}
+					// ENd append only unique visit plan
+				}
+			}
+			//End append data for Visit Plan
+
+			if (this.globalVar.visitPlan.length > 0) {
+				this._setViewModel("MultiVisitPlan", this.globalVar.visitPlan, this.selectedVisitPlan); //Populate data to view model
+			}
+		},
+
+		_setViewModel: function (modelName, data, selected) {
 			var oModel = this.byId(modelName).getModel();
 			oModel.setData({
-				Data: data
+				Data: data,
+				Selected: selected
 			});
+			if (selected.length > 0) this.byId(modelName).bindProperty("selectedKeys", "/Selected");
 			this.byId(modelName).setModel(oModel);
 			this.byId(modelName).getModel().refresh(true);
 		},
@@ -273,10 +297,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		_getMultiBoxKey: function (selectedItems) {
 			var ret = [];
 			for (var i = 0; i < selectedItems.length; i++) {
-				var data = {
-					key: selectedItems[i].getKey()
-				};
-				ret.push(data);
+				// var data = {
+				// 	key: selectedItems[i].getKey()
+				// };
+				ret.push(selectedItems[i].getKey());
 			}
 			return ret;
 		},

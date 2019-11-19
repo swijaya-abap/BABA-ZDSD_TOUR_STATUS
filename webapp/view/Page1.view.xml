@@ -38,13 +38,19 @@
 									<columns>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
-												<Text text="Route" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<Text text="User" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
 										</Column>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
 												<Text text="Tour ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Vehicle ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
 										</Column>
@@ -77,6 +83,7 @@
 										<cells>
 											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
 											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>VehicleId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
 											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
 												visible="true"/>
@@ -98,13 +105,19 @@
 									<columns>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
-												<Text text="Route" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<Text text="User" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
 										</Column>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
 												<Text text="Tour ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Vehicle ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
 										</Column>
@@ -137,6 +150,7 @@
 										<cells>
 											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
 											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>VehicleId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
 											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
 												visible="true"/>
@@ -148,8 +162,8 @@
 							</content>
 						</IconTabFilter>
 						<IconTabSeparator icon="" iconDensityAware="false"/>
-						<IconTabFilter icon="sap-icon://message-success" iconColor="Positive" text="Other" count="{modelData>/countThird}" design="Vertical" showAll="false"
-							textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<IconTabFilter icon="sap-icon://message-success" iconColor="Positive" text="Other" count="{modelData>/countThird}" design="Vertical"
+							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
 								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
 									class="sapUiResponsiveMargin" items="{path: 'modelData>/ThirdTable'}">
@@ -158,13 +172,19 @@
 									<columns>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
-												<Text text="Route" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												<Text text="User" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
 										</Column>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
 												<Text text="Tour ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
+												<Text text="Vehicle ID" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
 										</Column>
@@ -197,6 +217,7 @@
 										<cells>
 											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
 											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>VehicleId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
 											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
 												visible="true"/>
