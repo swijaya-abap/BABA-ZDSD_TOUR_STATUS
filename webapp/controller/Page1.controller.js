@@ -79,25 +79,30 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					success: function (oData, oResponse) {
 						var res = oData.results;
 
-						for (i = 0; i < res.length; i++) {
-							if (res[i].Category === "S" || res[i].Category === "W") {
-								firstTable.push(res[i]);
-							} else if (res[i].Category === "E") {
-								secondTable.push(res[i]);
-							} else {
-								thirdTable.push(res[i]);
-							}
-						}
+						if (res[0].Message !== "") { //Check error from backend
+							MessageBox.error(res[0].Message);
+						} else {
 
-						jsonModel.setData({
-							countFirst: firstTable.length,
-							countSecond: secondTable.length,
-							countThird: thirdTable.length,
-							FirstTable: firstTable,
-							SecondTable: secondTable,
-							ThirdTable: thirdTable
-						});
-						this.getView().setModel(jsonModel, "modelData");
+							for (i = 0; i < res.length; i++) {
+								if (res[i].Category === "S" || res[i].Category === "W") {
+									firstTable.push(res[i]);
+								} else if (res[i].Category === "E") {
+									secondTable.push(res[i]);
+								} else {
+									thirdTable.push(res[i]);
+								}
+							}
+
+							jsonModel.setData({
+								countFirst: firstTable.length,
+								countSecond: secondTable.length,
+								countThird: thirdTable.length,
+								FirstTable: firstTable,
+								SecondTable: secondTable,
+								ThirdTable: thirdTable
+							});
+							this.getView().setModel(jsonModel, "modelData");
+						}
 
 						this._onBusyE(oBusy);
 					}.bind(this),
