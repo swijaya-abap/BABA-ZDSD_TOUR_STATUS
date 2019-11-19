@@ -38,10 +38,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize"
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize"]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -79,11 +76,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -94,34 +89,26 @@
 				"clearTarget": false,
 				"controlAggregation": "pages",
 				"bypassed": {
-					"target": [
-						"Page1"
-					]
+					"target": ["Page1"]
 				}
 			},
-			"routes": [
-				{
-					"pattern": "Page1/:context:",
-					"name": "Page1",
-					"target": [
-						"Page1"
-					]
-				},
-				{
-					"pattern": "",
-					"name": "default",
-					"target": [
-						"Page1"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "Page1/:context:",
+				"name": "Page1",
+				"target": ["Page1"]
+			}, {
+				"pattern": "",
+				"name": "",
+				"target": ["Page1"]
+			}],
 			"targets": {
 				"Page1": {
 					"controlAggregation": "pages",
 					"viewName": "Page1",
 					"viewId": "Page1",
 					"viewLevel": 1,
-					"transition": "slide"
+					"transition": "slide",
+					"title": "Tour Status"
 				}
 			}
 		}
