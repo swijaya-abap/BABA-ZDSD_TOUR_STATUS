@@ -1,6 +1,6 @@
 specVersion: '1.0'
 metadata:
-  name: ZDSD_TOUR_STATUS
+  name: ZDSD_TOUR_STS
 type: application
 resources:
   configuration:

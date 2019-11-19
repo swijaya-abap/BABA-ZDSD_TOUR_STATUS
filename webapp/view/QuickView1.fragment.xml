@@ -1,4 +1,4 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.baba.ZDSD_TOUR_STATUS.controller.QuickView1" xmlns="sap.m">
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.baba.ZDSD_TOUR_STS.controller.QuickView1" xmlns="sap.m">
     <QuickView placement="Auto" width="320px">
         <pages>
             <QuickViewPage header="Supervisor Details" title="Name" titleUrl="" description="Jatin Pursnani" icon="sap-icon://personnel-view">

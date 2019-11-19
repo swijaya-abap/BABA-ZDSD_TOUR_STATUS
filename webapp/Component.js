@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"com/baba/ZDSD_TOUR_STATUS/model/models"
+	"com/baba/ZDSD_TOUR_STS/model/models"
 ], function (UIComponent, Device, models) {
 	"use strict";
 
-	return UIComponent.extend("com.baba.ZDSD_TOUR_STATUS.Component", {
+	return UIComponent.extend("com.baba.ZDSD_TOUR_STS.Component", {
 
 		metadata: {
 			manifest: "json"

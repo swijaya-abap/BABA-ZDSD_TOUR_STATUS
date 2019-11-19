@@ -1,7 +1,7 @@
 {
 	"_version": "1.8.0",
 	"sap.app": {
-		"id": "com.baba.ZDSD_TOUR_STATUS",
+		"id": "com.baba.ZDSD_TOUR_STS",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -45,7 +45,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "com.baba.ZDSD_TOUR_STATUS.view.Page1",
+			"viewName": "com.baba.ZDSD_TOUR_STS.view.Page1",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -64,7 +64,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "com.baba.ZDSD_TOUR_STATUS.i18n.i18n"
+					"bundleName": "com.baba.ZDSD_TOUR_STS.i18n.i18n"
 				}
 			},
 			"": {
@@ -89,7 +89,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "com.baba.ZDSD_TOUR_STATUS.view",
+				"viewPath": "com.baba.ZDSD_TOUR_STS.view",
 				"controlId": "idAppControl",
 				"clearTarget": false,
 				"controlAggregation": "pages",
@@ -101,7 +101,7 @@
 			},
 			"routes": [
 				{
-					"pattern": "Page1/:context:",
+					"pattern": "Page1",
 					"name": "Page1",
 					"target": [
 						"Page1"
@@ -115,7 +115,7 @@
 					"viewId": "Page1",
 					"viewLevel": 1,
 					"transition": "slide",
-					"title": "Tour Status"
+					"title": ""
 				}
 			}
 		}

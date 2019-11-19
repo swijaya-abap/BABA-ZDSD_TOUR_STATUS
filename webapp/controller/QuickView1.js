@@ -5,10 +5,10 @@ sap.ui.define([
 	"sap/ui/core/routing/History"
 ], function(ManagedObject, MessageBox, Utilities, History) {
 
-	return ManagedObject.extend("com.baba.ZDSD_TOUR_STATUS.controller.QuickView1", {
+	return ManagedObject.extend("com.baba.ZDSD_TOUR_STS.controller.QuickView1", {
 		constructor: function(oView) {
 			this._oView = oView;
-			this._oControl = sap.ui.xmlfragment(oView.getId(), "com.baba.ZDSD_TOUR_STATUS.view.QuickView1", this);
+			this._oControl = sap.ui.xmlfragment(oView.getId(), "com.baba.ZDSD_TOUR_STS.view.QuickView1", this);
 			this._bInit = false;
 		},
 

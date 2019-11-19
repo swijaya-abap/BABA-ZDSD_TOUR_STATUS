@@ -6,7 +6,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 ], function (BaseController, MessageBox, Utilities, History, JSONModel) {
 	"use strict";
 
-	return BaseController.extend("com.baba.ZDSD_TOUR_STATUS.controller.Page1", {
+	return BaseController.extend("com.baba.ZDSD_TOUR_STS.controller.Page1", {
 		onInit: function () {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
@@ -49,7 +49,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				}.bind(this)
 			});
 
-			this.oRouter.getTarget("Page1").attachDisplay(jQuery.proxy(this._handleRouteMatched, this));
+			// this.oRouter.getTarget("Page1").attachDisplay(jQuery.proxy(this._handleRouteMatched, this));
 		},
 
 		onButtonPress: function () {
@@ -317,43 +317,43 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		_onBusyE: function (oBusy) {
 			oBusy.close();
-		},
-
-		_handleRouteMatched: function (oEvent) {
-			var sAppId = "App5d984d7b2bcf106eb6fa867f";
-
-			var oParams = {};
-
-			if (oEvent.mParameters.data.context) {
-				this.sContext = oEvent.mParameters.data.context;
-
-			} else {
-				if (this.getOwnerComponent().getComponentData()) {
-					var patternConvert = function (oParam) {
-						if (Object.keys(oParam).length !== 0) {
-							for (var prop in oParam) {
-								if (prop !== "sourcePrototype" && prop.includes("Set")) {
-									return prop + "(" + oParam[prop][0] + ")";
-								}
-							}
-						}
-					};
-
-					this.sContext = patternConvert(this.getOwnerComponent().getComponentData().startupParameters);
-
-				}
-			}
-
-			var oPath;
-
-			if (this.sContext) {
-				oPath = {
-					path: "/" + this.sContext,
-					parameters: oParams
-				};
-				this.getView().bindObject(oPath);
-			}
-
 		}
+
+		// _handleRouteMatched: function (oEvent) {
+		// 	// var sAppId = "App5d984d7b2bcf106eb6fa867f";
+
+		// 	var oParams = {};
+
+		// 	// if (oEvent.mParameters.data.context) {
+		// 	// 	this.sContext = oEvent.mParameters.data.context;
+
+		// 	// } else {
+		// 	if (this.getOwnerComponent().getComponentData()) {
+		// 		var patternConvert = function (oParam) {
+		// 			if (Object.keys(oParam).length !== 0) {
+		// 				for (var prop in oParam) {
+		// 					if (prop !== "sourcePrototype" && prop.includes("Set")) {
+		// 						return prop + "(" + oParam[prop][0] + ")";
+		// 					}
+		// 				}
+		// 			}
+		// 		};
+
+		// 		this.sContext = patternConvert(this.getOwnerComponent().getComponentData().startupParameters);
+
+		// 	}
+		// 	// }
+
+		// 	var oPath;
+
+		// 	if (this.sContext) {
+		// 		oPath = {
+		// 			path: "/" + this.sContext,
+		// 			parameters: oParams
+		// 		};
+		// 		this.getView().bindObject(oPath);
+		// 	}
+
+		// }
 	});
 }, /* bExport= */ true);
