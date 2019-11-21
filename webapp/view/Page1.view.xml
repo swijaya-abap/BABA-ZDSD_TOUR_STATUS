@@ -56,6 +56,12 @@
 										</Column>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
+												<Text text="Tour Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
 												<Text text="Tour Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
@@ -84,11 +90,11 @@
 											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
 											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<Text text="{modelData>VehicleId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>TourDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
-											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
-												visible="true"/>
-											<Text text="{modelData>PricingStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-											<Text text="{modelData>ReloadStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<ObjectNumber number="{modelData>TransactionDataStatus}" unit="" emphasized="false" state="None"/>
+											<ObjectNumber number="{modelData>PricingStatus}" unit="" emphasized="false" state="None"/>
+											<ObjectNumber number="{modelData>ReloadStatus}" unit="" emphasized="false" state="None"/>
 										</cells>
 									</ColumnListItem>
 								</Table>
@@ -123,6 +129,12 @@
 										</Column>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
+												<Text text="Tour Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
 												<Text text="Tour Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
@@ -151,11 +163,11 @@
 											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
 											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<Text text="{modelData>VehicleId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>TourDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
-											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
-												visible="true"/>
-											<Text text="{modelData>PricingStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-											<Text text="{modelData>ReloadStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<ObjectNumber number="{modelData>TransactionDataStatus}" unit="" emphasized="false" state="None"/>
+											<ObjectNumber number="{modelData>PricingStatus}" unit="" emphasized="false" state="None"/>
+											<ObjectNumber number="{modelData>ReloadStatus}" unit="" emphasized="false" state="None"/>
 										</cells>
 									</ColumnListItem>
 								</Table>
@@ -190,6 +202,12 @@
 										</Column>
 										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
 											<header>
+												<Text text="Tour Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											</header>
+											<footer/>
+										</Column>
+										<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+											<header>
 												<Text text="Tour Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											</header>
 											<footer/>
@@ -218,11 +236,11 @@
 											<ObjectIdentifier title="{modelData>Route}" text="" titleActive="false" visible="true"/>
 											<Text text="{modelData>TourId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<Text text="{modelData>VehicleId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<Text text="{modelData>TourDate}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
 											<ObjectNumber number="{modelData>TourStatus}" unit="" emphasized="true" state="None"/>
-											<Text text="{modelData>TransactionDataStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
-												visible="true"/>
-											<Text text="{modelData>PricingStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-											<Text text="{modelData>ReloadStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+											<ObjectNumber number="{modelData>TransactionDataStatus}" unit="" emphasized="false" state="None"/>
+											<ObjectNumber number="{modelData>PricingStatus}" unit="" emphasized="false" state="None"/>
+											<ObjectNumber number="{modelData>ReloadStatus}" unit="" emphasized="false" state="None"/>
 										</cells>
 									</ColumnListItem>
 								</Table>

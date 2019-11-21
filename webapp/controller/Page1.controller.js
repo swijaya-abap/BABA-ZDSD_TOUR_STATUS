@@ -84,6 +84,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						} else {
 
 							for (i = 0; i < res.length; i++) {
+								res[i].TourDate = this._convertDate(res[i].TourDate, "dd.MM.yyyy");
 								if (res[i].Category === "S" || res[i].Category === "W") {
 									firstTable.push(res[i]);
 								} else if (res[i].Category === "E") {
@@ -160,6 +161,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				var selectedItems = oEvent.getParameter("selectedItems");
 				this.selectedUser = this._getMultiBoxKey(selectedItems); //Get selected visit plan
 			}
+		},
+
+		_convertDate: function (date, format) {
+			var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern : format });
+			var TZOffsetMs = new Date(0).getTimezoneOffset()*60*1000;
+			return dateFormat.format(new Date(date.getTime() + TZOffsetMs));
 		},
 
 		_setBranchComboBox: function (setSelected) {
