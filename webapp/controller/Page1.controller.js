@@ -17,6 +17,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			this.byId("MultiVisitPlan").setModel(new JSONModel());
 			this.byId("MultiUser").setModel(new JSONModel());
 
+			this.byId("MultiBranch").getModel().setSizeLimit("500");
+			this.byId("MultiVisitPlan").getModel().setSizeLimit("500");
+			this.byId("MultiUser").getModel().setSizeLimit("500");
+
 			this.selectedBranch = [];
 			this.selectedVisitPlan = [];
 			this.selectedUser = [];
@@ -32,6 +36,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						MessageBox.error(res[0].Message);
 					} else {
 						this.globalVar.fullSet = res; // Save result into global variable for later use
+
+						this.globalVar.poweruserEnabled = res[0].PoweruserEnabled;
+						if (this.globalVar.poweruserEnabled) {
+							var jsonModel = new JSONModel();
+
+							jsonModel.setData({
+								resendVisible: false,
+								removeVisible: false,
+								uploadVisible: false
+							});
+							this.getView().setModel(jsonModel, "modelView");
+						}
 
 						this._setBranchComboBox(true);
 
@@ -82,6 +98,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						if (res[0].Message !== "") { //Check error from backend
 							MessageBox.error(res[0].Message);
 						} else {
+							
+							this.globalVar.selectedTour = "";
 
 							for (i = 0; i < res.length; i++) {
 								res[i].TourDate = this._convertDate(res[i].TourDate, "dd.MM.yyyy");
@@ -118,6 +136,48 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 
+		onResendPress: function (oEvent) {
+			if (!this._isTourSelected()) {
+				MessageBox.error("Please select tour");
+			} else {
+				this.globalVar.entitySet = "/RESENDSet";
+				this._openDialog("SecureDialog", "Resend Tour");
+			}
+		},
+
+		onRemovePress: function (oEvent) {
+			if (!this._isTourSelected()) {
+				MessageBox.error("Please select tour");
+			} else {
+				this.globalVar.entitySet = "/REMOVESet";
+				this._openDialog("SecureDialog", "Remove Tour");
+			}
+		},
+
+		onUploadPress: function (oEvent) {
+			if (!this._isTourSelected()) {
+				MessageBox.error("Please select tour");
+			} else {
+				this.globalVar.entitySet = "/UPLOADSet";
+				this._openDialog("SecureDialog", "Upload Tour Manually");
+			}
+		},
+
+		onSelChangeFirst: function (oEvent) {
+			this._removeAllSelectionExcept("firstTable");
+			this._setSelectedTour("firstTable");
+		},
+
+		onSelChangeSecond: function (oEvent) {
+			this._removeAllSelectionExcept("secondTable");
+			this._setSelectedTour("secondTable");
+		},
+
+		onSelChangeThird: function (oEvent) {
+			this._removeAllSelectionExcept("thirdTable");
+			this._setSelectedTour("thirdTable");
+		},
+
 		onMultiBranchChange: function (oEvent) {
 			this.multiBranchChanged = true;
 		},
@@ -151,7 +211,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 				this._clearViewModel("MultiUser"); //Clear Multi Combo Box of User
 
-				this._setUserComboBox(false);
+				this._setUserComboBox(true);
 			}
 		},
 
@@ -163,9 +223,83 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 		},
 
+		onSecureOk: function (oEvent) {
+			var secureKey = this.byId("InSecKey").getValue();
+
+			if (secureKey === undefined || secureKey === "") {
+				MessageBox.error("Please enter secure key");
+			} else {
+
+				// Set busy indicator
+				var oBusy = new sap.m.BusyDialog();
+				this._onBusyS(oBusy);
+
+				// Set entity set path
+				var path = this.globalVar.entitySet + "(TourId='" + this.globalVar.selectedTour + "',SecureKey='" + secureKey + "')";
+
+				// Call entity set
+				this.globalVar.oDataModel.read(path, {
+					success: function (oData, oResponse) {
+						var res = oData;
+
+						if (res.Message !== "") { //Check error from backend
+							MessageBox.error(res.Message);
+						} else {
+							sap.m.MessageToast.show("Success");
+							this.byId("SecureDialog").close();
+						}
+						this._onBusyE(oBusy);
+					}.bind(this),
+					error: function (oResponse) {
+						this._onBusyE(oBusy);
+						var oMsg = JSON.parse(oResponse.responseText);
+						MessageBox.error(oMsg.error.message.value);
+					}.bind(this)
+				});
+			}
+		},
+
+		onSecureClose: function (oEvent) {
+			this.byId("SecureDialog").close();
+		},
+
+		_isTourSelected: function () {
+			if (this.globalVar.selectedTour === "" || this.globalVar.selectedTour === undefined) {
+				return false;
+			} else {
+				return true;
+			}
+		},
+
+		_setSelectedTour: function (id) {
+			var selectedContext = this.byId(id).getSelectedContexts();
+			var selectedObject = selectedContext[0].getObject();
+			this.globalVar.selectedTour = selectedObject.TourId;
+		},
+
+		_openDialog: function (iDialogName, iTitle) {
+			var oView = this.getView();
+			var oDialog = this.byId(iDialogName);
+			// create dialog lazily
+			if (!oDialog) {
+				oDialog = sap.ui.xmlfragment(oView.getId(), "com.baba.ZDSD_TOUR_STS.view." + iDialogName, this);
+				oView.addDependent(oDialog);
+			}
+			oDialog.setTitle(iTitle);
+			oDialog.open();
+		},
+
+		_removeAllSelectionExcept: function (id) {
+			if (id !== "firstTable") this.byId("firstTable").removeSelections();
+			if (id !== "secondTable") this.byId("secondTable").removeSelections();
+			if (id !== "thirdTable") this.byId("thirdTable").removeSelections();
+		},
+
 		_convertDate: function (date, format) {
-			var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({pattern : format });
-			var TZOffsetMs = new Date(0).getTimezoneOffset()*60*1000;
+			var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+				pattern: format
+			});
+			var TZOffsetMs = new Date(0).getTimezoneOffset() * 60 * 1000;
 			return dateFormat.format(new Date(date.getTime() + TZOffsetMs));
 		},
 
@@ -196,6 +330,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		_setUserComboBox: function (setSelected) {
 			//Append data for Visit Plan
 			this.globalVar.user = [];
+			this.selectedUser = [];
 			for (var i = 0; i < this.globalVar.fullSet.length; i++) {
 				var isFound = false;
 
@@ -293,7 +428,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				Data: data,
 				Selected: selected
 			});
-			if (selected.length > 0) this.byId(modelName).bindProperty("selectedKeys", "/Selected");
+			if (selected.length > 0) {
+				var lSelected = oModel.getProperty("/Selected");
+				if (lSelected.length === 0) oModel.setProperty("/Selected", selected);
+				this.byId(modelName).bindProperty("selectedKeys", "/Selected");
+			}
 			this.byId(modelName).setModel(oModel);
 			this.byId(modelName).getModel().refresh(true);
 		},
@@ -304,6 +443,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 				Data: {}
 			});
 			this.byId(modelName).setModel(oModel);
+			this.byId(modelName).getModel().refresh(true);
 		},
 
 		_getMultiBoxKey: function (selectedItems) {

@@ -31,8 +31,8 @@
 						<IconTabFilter icon="sap-icon://message-warning" iconColor="Critical" text="Warning" count="{modelData>/countFirst}" design="Vertical"
 							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
-								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin" items="{path: 'modelData>/FirstTable'}">
+								<Table id="firstTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+									class="sapUiResponsiveMargin" items="{path: 'modelData>/FirstTable'}" selectionChange="onSelChangeFirst">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -104,8 +104,8 @@
 						<IconTabFilter icon="sap-icon://message-error" iconColor="Negative" text="Error" count="{modelData>/countSecond}" design="Vertical"
 							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
-								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin" items="{path: 'modelData>/SecondTable'}">
+								<Table id="secondTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+									class="sapUiResponsiveMargin" items="{path: 'modelData>/SecondTable'}" selectionChange="onSelChangeSecond">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -177,8 +177,8 @@
 						<IconTabFilter icon="sap-icon://message-success" iconColor="Positive" text="Other" count="{modelData>/countThird}" design="Vertical"
 							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
-								<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin" items="{path: 'modelData>/ThirdTable'}">
+								<Table id="thirdTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+									class="sapUiResponsiveMargin" items="{path: 'modelData>/ThirdTable'}" selectionChange="onSelChangeThird">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -256,6 +256,12 @@
 						<ToolbarSpacer width=""/>
 						<Button text="Get Data" type="Default" icon="sap-icon://repost" iconFirst="true" width="auto" enabled="true" visible="true"
 							iconDensityAware="false" press="onButtonPress"/>
+						<Button text="Resend Tour" type="Default" icon="sap-icon://synchronize" iconFirst="true" width="auto" enabled="true" visible="{modelView>/resendVisible}"
+							iconDensityAware="false" press="onResendPress"/>
+						<Button text="Remove Tour" type="Default" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="{modelView>/removeVisible}"
+							iconDensityAware="false" press="onRemovePress"/>
+						<Button text="Upload Tour Manually" type="Default" icon="sap-icon://upload" iconFirst="true" width="auto" enabled="true" visible="{modelView>/uploadVisible}"
+							iconDensityAware="false" press="onUploadPress"/>
 					</content>
 				</OverflowToolbar>
 			</footer>
