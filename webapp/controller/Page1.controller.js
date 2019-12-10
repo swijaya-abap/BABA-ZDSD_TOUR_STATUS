@@ -37,8 +37,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 					} else {
 						this.globalVar.fullSet = res; // Save result into global variable for later use
 
-						this.globalVar.poweruserEnabled = res[0].PoweruserEnabled;
-						if (this.globalVar.poweruserEnabled) {
+						this.globalVar.poweruserEnabled = res[0].PoweruserEnable;
+						if (!this.globalVar.poweruserEnabled) {
 							var jsonModel = new JSONModel();
 
 							jsonModel.setData({

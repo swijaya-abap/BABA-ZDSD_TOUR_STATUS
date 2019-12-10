@@ -1,8 +1,8 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.baba.ZDSD_TOUR_STS.controller.Page1" xmlns="sap.m" xmlns:core="sap.ui.core"
-	xmlns:layout="sap.ui.layout">
+	xmlns:semantic="sap.m.semantic" xmlns:layout="sap.ui.layout">
 	<App id="idAppControl">
-		<Page showHeader="true" title="Tour Status" showFooter="true">
-			<content>
+		<semantic:FullscreenPage title="Tour Status" showFooter="true">
+			<semantic:content>
 				<Label text="Branch" design="Bold" width="200px" required="true" textAlign="Begin" textDirection="Inherit" visible="true"
 					class="sapUiResponsiveMargin"/>
 				<MultiComboBox id="MultiBranch" editable="true" enabled="true" width="1015.00000000px" valueState="None" maxWidth="100%"
@@ -31,8 +31,8 @@
 						<IconTabFilter icon="sap-icon://message-warning" iconColor="Critical" text="Warning" count="{modelData>/countFirst}" design="Vertical"
 							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
-								<Table id="firstTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin" items="{path: 'modelData>/FirstTable'}" selectionChange="onSelChangeFirst">
+								<Table id="firstTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20"
+									growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{path: 'modelData>/FirstTable'}" selectionChange="onSelChangeFirst">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -104,8 +104,8 @@
 						<IconTabFilter icon="sap-icon://message-error" iconColor="Negative" text="Error" count="{modelData>/countSecond}" design="Vertical"
 							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
-								<Table id="secondTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin" items="{path: 'modelData>/SecondTable'}" selectionChange="onSelChangeSecond">
+								<Table id="secondTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20"
+									growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{path: 'modelData>/SecondTable'}" selectionChange="onSelChangeSecond">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -177,8 +177,8 @@
 						<IconTabFilter icon="sap-icon://message-success" iconColor="Positive" text="Other" count="{modelData>/countThird}" design="Vertical"
 							showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
 							<content>
-								<Table id="thirdTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-									class="sapUiResponsiveMargin" items="{path: 'modelData>/ThirdTable'}" selectionChange="onSelChangeThird">
+								<Table id="thirdTable" width="auto" noDataText="No data" mode="SingleSelect" showSeparators="All" growing="true" growingThreshold="20"
+									growingScrollToLoad="true" class="sapUiResponsiveMargin" items="{path: 'modelData>/ThirdTable'}" selectionChange="onSelChangeThird">
 									<infoToolbar/>
 									<headerToolbar/>
 									<columns>
@@ -249,25 +249,25 @@
 					</items>
 					<content/>
 				</IconTabBar>
-			</content>
-			<footer>
-				<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
-					<content>
-						<ToolbarSpacer width=""/>
-						<Button text="Get Data" type="Default" icon="sap-icon://repost" iconFirst="true" width="auto" enabled="true" visible="true"
-							iconDensityAware="false" press="onButtonPress"/>
-						<Button text="Resend Tour" type="Default" icon="sap-icon://synchronize" iconFirst="true" width="auto" enabled="true" visible="{modelView>/resendVisible}"
-							iconDensityAware="false" press="onResendPress"/>
-						<Button text="Remove Tour" type="Default" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="{modelView>/removeVisible}"
-							iconDensityAware="false" press="onRemovePress"/>
-						<Button text="Upload Tour Manually" type="Default" icon="sap-icon://upload" iconFirst="true" width="auto" enabled="true" visible="{modelView>/uploadVisible}"
-							iconDensityAware="false" press="onUploadPress"/>
-					</content>
-				</OverflowToolbar>
-			</footer>
-			<headerContent/>
-			<subHeader/>
-			<customHeader/>
-		</Page>
+			</semantic:content>
+			<semantic:customFooterContent>
+				<!--<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">-->
+				<!--	<content>-->
+				<!--		<ToolbarSpacer width=""/>-->
+				<Button text="Get Data" type="Default" icon="sap-icon://repost" iconFirst="true" width="auto" enabled="true" visible="true"
+					iconDensityAware="false" press="onButtonPress"/>
+				<Button text="Resend Tour" type="Default" icon="sap-icon://synchronize" iconFirst="true" width="auto" enabled="true"
+					visible="{modelView>/resendVisible}" iconDensityAware="false" press="onResendPress"/>
+				<Button text="Remove Tour" type="Default" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true"
+					visible="{modelView>/removeVisible}" iconDensityAware="false" press="onRemovePress"/>
+				<Button text="Upload Tour Manually" type="Default" icon="sap-icon://upload" iconFirst="true" width="auto" enabled="true"
+					visible="{modelView>/uploadVisible}" iconDensityAware="false" press="onUploadPress"/>
+				<!--	</content>-->
+				<!--</OverflowToolbar>-->
+			</semantic:customFooterContent>
+			<!--<headerContent/>-->
+			<!--<subHeader/>-->
+			<!--<customHeader/>-->
+		</semantic:FullscreenPage>
 	</App>
 </mvc:View>
