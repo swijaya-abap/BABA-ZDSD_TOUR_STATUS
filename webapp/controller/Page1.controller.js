@@ -68,6 +68,45 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			// this.oRouter.getTarget("Page1").attachDisplay(jQuery.proxy(this._handleRouteMatched, this));
 		},
 
+		onAllBranch: function () {
+			this._setBranchComboBox(true);
+			
+			this._clearViewModel("MultiVisitPlan"); //Clear Multi Combo Box of Visit Plan
+			this._clearViewModel("MultiUser"); //Clear Multi Combo Box of User
+			this._setVisitPlanComboBox(true); //Set Visit Plan Combo Box data based on selected branch
+			this._setUserComboBox(true);
+		},
+
+		onNoneBranch: function () {
+			this._setBranchComboBox(false);
+			
+			this._clearViewModel("MultiVisitPlan"); //Clear Multi Combo Box of Visit Plan
+			this._clearViewModel("MultiUser"); //Clear Multi Combo Box of User
+			this._setVisitPlanComboBox(false); //Set Visit Plan Combo Box data based on selected branch
+		},
+
+		onAllVisit: function () {
+			this._setVisitPlanComboBox(true);
+
+			this._clearViewModel("MultiUser"); //Clear Multi Combo Box of User
+			this._setUserComboBox(true);
+		},
+
+		onNoneVisit: function () {
+			this._setVisitPlanComboBox(false);
+
+			this._clearViewModel("MultiUser"); //Clear Multi Combo Box of User
+			this._setUserComboBox(false);
+		},
+
+		onAllUser: function () {
+			this._setUserComboBox(true);
+		},
+
+		onNoneUser: function () {
+			this._setUserComboBox(false);
+		},
+
 		onButtonPress: function () {
 			var jsonModel = new JSONModel();
 			this.getView().setModel(jsonModel, "modelData");
@@ -98,7 +137,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 						if (res[0].Message !== "") { //Check error from backend
 							MessageBox.error(res[0].Message);
 						} else {
-							
+
 							this.globalVar.selectedTour = "";
 
 							for (i = 0; i < res.length; i++) {
@@ -305,6 +344,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 		_setBranchComboBox: function (setSelected) {
 			this.globalVar.branch = []; // Set mutli combo box for branch
+			this.selectedBranch = [];
 			// Append only unique branches
 			for (var i = 0; i < this.globalVar.fullSet.length; i++) {
 				var isFound = false;
@@ -384,6 +424,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		_setVisitPlanComboBox: function (setSelected) {
 			//Append data for Visit Plan
 			this.globalVar.visitPlan = [];
+			this.selectedVisitPlan = [];
 			for (var i = 0; i < this.globalVar.fullSet.length; i++) {
 				var isFound = false;
 

@@ -262,6 +262,18 @@
 					visible="{modelView>/removeVisible}" iconDensityAware="false" press="onRemovePress"/>
 				<Button text="Upload Tour Manually" type="Default" icon="sap-icon://upload" iconFirst="true" width="auto" enabled="true"
 					visible="{modelView>/uploadVisible}" iconDensityAware="false" press="onUploadPress"/>
+				<Button text="Branch - Select All" type="Default" icon="sap-icon://multiselect-all" iconFirst="true" width="auto" enabled="true"
+					visible="true" iconDensityAware="false" press="onAllBranch"/>
+				<Button text="Branch - Deselect All" type="Default" icon="sap-icon://multiselect-none" iconFirst="true" width="auto" enabled="true"
+					visible="true" iconDensityAware="false" press="onNoneBranch"/>
+				<Button text="Visit Plan Type - Select All" type="Default" icon="sap-icon://multiselect-all" iconFirst="true" width="auto" enabled="true"
+					visible="true" iconDensityAware="false" press="onAllVisit"/>
+				<Button text="Visit Plan Type - Deselect All" type="Default" icon="sap-icon://multiselect-none" iconFirst="true" width="auto" enabled="true"
+					visible="true" iconDensityAware="false" press="onNoneVisit"/>
+				<Button text="User - Select All" type="Default" icon="sap-icon://multiselect-all" iconFirst="true" width="auto" enabled="true"
+					visible="true" iconDensityAware="false" press="onAllUser"/>
+				<Button text="User - Deselect All" type="Default" icon="sap-icon://multiselect-none" iconFirst="true" width="auto" enabled="true"
+					visible="true" iconDensityAware="false" press="onNoneUser"/>
 				<!--	</content>-->
 				<!--</OverflowToolbar>-->
 			</semantic:customFooterContent>
